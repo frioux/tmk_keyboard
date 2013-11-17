@@ -52,7 +52,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // layout: layer 1: F-keys instead of numbers
         // left hand
         FN7,   F1,  F2,  F3,  F4,  F5,  F6,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,FN10,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -80,6 +80,7 @@ enum function_id {
 enum macro_id {
     COPY,
     PASTE,
+    WORD,
 };
 
 /*
@@ -92,6 +93,7 @@ const action_t PROGMEM fn_actions[] = {
 
    [8] = ACTION_MACRO(COPY),                            // Macro: CTRL+C
    [9] = ACTION_MACRO(PASTE),                           // Macro: CTRL+V
+  [10] = ACTION_MACRO(WORD),                            // Macro: CTRL+RIGHT
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
@@ -121,6 +123,10 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         case PASTE:
             return (event.pressed ?
                     MACRO( I(0), D(LCTL), T(V), U(LCTL), END ) :
+                    MACRO_NONE );
+        case WORD:
+            return (event.pressed ?
+                    MACRO( I(0), D(LCTL), T(RGHT), U(LCTL), END ) :
                     MACRO_NONE );
     }
     return MACRO_NONE;
