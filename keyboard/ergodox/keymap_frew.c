@@ -37,7 +37,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         PAUS, NO, NO,  NO,   NO,
                                      LCTL, LALT,
                                            HOME,
-                                 BSPC,LGUI,  NO,
+                                 BSPC,FN3,  NO,
         // right hand
               NO, 7,   8,   9,   0,   MINS, EQL,
             LBRC, Y,   U,   I,   O,   P,   RBRC,
@@ -93,6 +93,7 @@ const action_t PROGMEM fn_actions[] = {
    [0] = ACTION_DEFAULT_LAYER_SET(0),                    // switch to Layer0
    [1] = ACTION_LAYER_TAP_KEY(1, KC_A),                  // push Layer1/A
    [2] = ACTION_LAYER_TAP_KEY(1, KC_SCLN),               // push Layer1/;
+   [3] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),          // SUPER/ESC
    [7] = ACTION_FUNCTION(TEENSY_KEY),                    // Teensy key
 
    [8] = ACTION_MACRO(COPY),                            // Macro: CTRL+C
