@@ -32,8 +32,8 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         ESC, 1,   2,   3,   4,   5,     6,
         GRV, Q,   W,   E,   R,   T,  BSLS,
-        TAB, A,   S,   D,   F,   G,
-        LSFT,Z,   X,   C,   V,   B,   FN1,
+        TAB,FN1,  S,   D,   F,   G,
+        LSFT,Z,   X,   C,   V,   B,    NO,
         PAUS, NO, NO,  NO,   NO,
                                      LCTL, LALT,
                                            HOME,
@@ -41,8 +41,8 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
               NO, 7,   8,   9,   0,   MINS, EQL,
             LBRC, Y,   U,   I,   O,   P,   RBRC,
-                  H,   J,   K,   L,   SCLN,QUOT,
-             FN1, N,   M,   COMM,DOT, SLSH,RSFT,
+                  H,   J,   K,   L,    FN2,QUOT,
+              NO, N,   M,   COMM,DOT, SLSH,RSFT,
                          NO,NO, NO,     NO,  NO,
         RALT,RCTL,
         PGUP,
@@ -91,7 +91,8 @@ enum macro_id {
  */
 const action_t PROGMEM fn_actions[] = {
    [0] = ACTION_DEFAULT_LAYER_SET(0),                    // switch to Layer0
-   [1] = ACTION_LAYER_MOMENTARY(1),                      // push Layer1
+   [1] = ACTION_LAYER_TAP_KEY(1, KC_A),                  // push Layer1/A
+   [2] = ACTION_LAYER_TAP_KEY(1, KC_SCLN),               // push Layer1/;
    [7] = ACTION_FUNCTION(TEENSY_KEY),                    // Teensy key
 
    [8] = ACTION_MACRO(COPY),                            // Macro: CTRL+C
