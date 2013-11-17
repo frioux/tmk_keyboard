@@ -61,7 +61,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
         // right hand
              TRNS,  F7,  F8,  F9, F10, F11, F12,
-             TRNS,COPY,TRNS,TRNS,TRNS,PASTE,RBRC,
+             TRNS,FN8,TRNS,TRNS,TRNS,FN9,RBRC,
                   LEFT,DOWN,  UP,RGHT,TRNS,TRNS,
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -77,6 +77,11 @@ enum function_id {
     TEENSY_KEY,
 };
 
+enum macro_id {
+    COPY,
+    PASTE,
+};
+
 /*
  * Fn action definition
  */
@@ -84,6 +89,9 @@ const action_t PROGMEM fn_actions[] = {
    [0] = ACTION_DEFAULT_LAYER_SET(0),                    // switch to Layer0
    [1] = ACTION_LAYER_MOMENTARY(1),                      // push Layer1
    [7] = ACTION_FUNCTION(TEENSY_KEY),                    // Teensy key
+
+   [8] = ACTION_MACRO(COPY),                            // Macro: CTRL+C
+   [9] = ACTION_MACRO(PASTE),                           // Macro: CTRL+V
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
@@ -100,3 +108,20 @@ void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
     }
 }
 
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    keyevent_t event = record->event;
+    tap_t tap = record->tap;
+
+    switch (id) {
+        case COPY:
+            return (event.pressed ?
+                    MACRO( I(0), D(LCTL), T(C), U(LCTL), END ) :
+                    MACRO_NONE );
+        case PASTE:
+            return (event.pressed ?
+                    MACRO( I(0), D(LCTL), T(V), U(LCTL), END ) :
+                    MACRO_NONE );
+    }
+    return MACRO_NONE;
+}
