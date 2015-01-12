@@ -37,7 +37,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         PAUS, NO, NO,  NO,   NO,
                                      LCTL, LALT,
                                            HOME,
-                                 BSPC,FN3,  NO,
+                                 BSPC,FN3, PSCREEN,
         // right hand
               NO, 7,   8,   9,   0,   MINS, EQL,
             LBRC, Y,   U,   I,   O,   P,   RBRC,
