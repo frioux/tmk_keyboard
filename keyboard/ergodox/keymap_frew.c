@@ -17,7 +17,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| ~Fn1 |           | ~Fn1 |------+------+------+------+------+--------|
      * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | Rshift |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Pause| '->' | '::' | '=>' |      |                                       |      |      |      |      |  Win |
+     *   | Pause|  Prv | Nxt  |      | Menu |                                       |      |      |      |      |  Win |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | LCtrl| LAlt |       | RAlt | RCtrl|
@@ -34,7 +34,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         GRV, Q,   W,   E,   R,   T,  BSLS,
         TAB,FN1,  S,   D,   F,   G,
         LSFT,Z,   X,   C,   V,   B,    NO,
-        MPLY,MPRV,  MNXT,  NO,   NO,
+        MPLY,MPRV,  MNXT,  NO,   MENU,
                                      LCTL, LALT,
                                            HOME,
                                  BSPC,FN3, PSCREEN,
